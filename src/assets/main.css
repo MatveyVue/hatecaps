@@ -9,6 +9,8 @@ body {
   font-family: Geologica;
   color: white;
   overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .top1 {
