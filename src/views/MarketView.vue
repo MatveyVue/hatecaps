@@ -8,8 +8,8 @@
 <div style="margin-top: 10px; border-radius: 20px;" v-for="(person, index) in gifts" :key="index" class="profiles">
     <img style="margin-left: 10px;" class="icon" :src="person.icon" alt="Profile Icon" v-if="person.icon">
     <p class="nick">{{ person.name }}</p>
-    <RouterLink v-if="person.link" :to="person.link">
-        <button class="view-btn">View</button>
+    <RouterLink style="text-decoration: none; color: Black; font-size: 16px;" v-if="person.link" :to="person.link">
+        <button style="text-decoration: none; color: black; font-size: 14px;" class="view-btn">View</button>
     </RouterLink>
 </div>
 
