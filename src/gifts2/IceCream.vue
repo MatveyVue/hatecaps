@@ -45,15 +45,29 @@
 export default {
   data() {
     return {
-      gifts: []
+      gifts: [],
+      currentPage: 0,
+      loading: false,
+      allLoaded: false
     };
   },
   async mounted() {
+    // Загружаем первую страницу
     await this.fetchGifts();
+
+    // Добавляем обработчик прокрутки
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
     async fetchGifts() {
-      const url = 'https://api-swiftgifts.vercel.app/api/aggregator?page=0';
+      if(this.loading || this.allLoaded) return;
+
+      this.loading = true;
+
+      const url = `https://api-swiftgifts.vercel.app/api/aggregator?page=${this.currentPage}`;
       const response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -69,8 +83,29 @@ export default {
           "number": null
         })
       });
+      
       const data = await response.json();
-      this.gifts = Array.isArray(data) ? data : data.items || [];
+
+      // Проверка — есть ли новые данные
+      const newGifts = Array.isArray(data) ? data : data.items || [];
+      if (newGifts.length > 0) {
+        this.gifts = [...this.gifts, ...newGifts]; // добавляем новые гифты
+        this.currentPage++; // переходим к следующей странице
+      } else {
+        this.allLoaded = true; // если данных больше нет, стоп
+      }
+      
+      this.loading = false;
+    },
+    handleScroll() {
+      // Проверка, что пользователь прокрутил почти до низа
+      if (
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 100 &&
+        !this.loading &&
+        !this.allLoaded
+      ) {
+        this.fetchGifts();
+      }
     }
   }
 };
