@@ -3,14 +3,17 @@ body {
   touch-action: none;
   overflow-x: hidden;
   background-attachment: fixed;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
   -ms-touch-action: none; 
   user-select: none;
   scrollbar-width: none; 
   font-family: Geologica;
   color: white;
   overflow-y: scroll;
+}
+
+a {
+  text-decoration: none;
+  font-size: 16px;
 }
 
 .top1 {
@@ -195,6 +198,7 @@ a {
   display: flex;
   flex-wrap: wrap; /* перенос элементов, если не помещаются в строке */
   gap: 2vw;
+  overflow-y: scroll;
 }
 
 .title {
