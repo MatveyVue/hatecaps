@@ -119,6 +119,7 @@ body {
   width: 100%;
   height: 135px;
   border-radius: 25px;
+  cursor: pointer;
 }
 
 .profiles {
@@ -152,6 +153,7 @@ a {
   color: rgb(25, 122, 207);
   border: none;
   font-family: Geologica;
+  cursor: pointer;
 }
 
 .market {
@@ -163,6 +165,7 @@ a {
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
   font-family: Geologica;
+  cursor: pointer;
 }
 
 .profile{
@@ -174,6 +177,7 @@ a {
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
   font-family: Geologica;
+  cursor: pointer;
 }
 
 .btn-container {
@@ -222,6 +226,7 @@ a {
   text-decoration: none;
   color: black;
   font-size: 14px;
+  cursor: pointer;
 }
 
 .view-btn {
@@ -234,6 +239,7 @@ a {
   float: right;
   margin-top: 15px;
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .tc {
